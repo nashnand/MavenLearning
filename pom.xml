@@ -20,6 +20,44 @@
                 <target>1.8</target>
             </configuration>
         </plugin>
+
+        <!--Build dependency plugin for Manifest error-Tell this is main class and where to start. -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>test.java.MainClass</mainClass>
+                        <ClasspathPrefix>lib/</ClasspathPrefix>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.1.2</version>
+            <executions>
+                <execution>
+                    <id>copy-dependencies</id>
+                    <phase>prepare-package</phase>
+                    <goals>
+                        <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.build.directory}/Lib</outputDirectory>
+                        <includeScope>runtime</includeScope>
+<!--                        <overWriteReleases>false</overWriteReleases>
+                        <overWriteSnapshots>false</overWriteSnapshots>
+                        <overWriteIfNewer>true</overWriteIfNewer>-->
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
     </build>
 <dependencies>

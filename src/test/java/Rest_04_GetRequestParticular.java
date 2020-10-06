@@ -9,21 +9,22 @@ import org.testng.annotations.Test;
 
 public class Rest_04_GetRequestParticular {
     @Test
-    public void getemployeedetails(){
+    public static void getemployeedetails() {
         //Specify base URI
-        RestAssured.baseURI="https://reqres.in/api/users/";
-                //Request object
-        RequestSpecification httprequest= RestAssured.given();
+        RestAssured.baseURI = "https://reqres.in/api/users/";
+        //Request object
+        RequestSpecification httprequest = RestAssured.given();
         //Response object
-        Response httpresponse= httprequest.request(Method.GET,"/6");
+        Response httpresponse = httprequest.request(Method.GET, "/6");
         //Print response
-        String Responsebody= httpresponse.getBody().asString();
-        System.out.println("Response body"+Responsebody);
+        String Responsebody = httpresponse.getBody().asString();
+        System.out.println("Response body" + Responsebody);
         //status code validation
-        int getStatus= httpresponse.getStatusCode();
-        Assert.assertEquals(getStatus,200);
+        int getStatus = httpresponse.getStatusCode();
+        Assert.assertEquals(getStatus, 200);
         //Status line
         String statusline = httpresponse.getStatusLine();
-        System.out.println("Status line"+statusline);
-        Assert.assertEquals(statusline,"HTTP/1.1 200 OK");
-}}
+        System.out.println("Status line" + statusline);
+        Assert.assertEquals(statusline, "HTTP/1.1 200 OK");
+    }
+}

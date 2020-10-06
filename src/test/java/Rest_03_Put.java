@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class Rest_03_Put {
 @Test
-    public void putrequest(){
+    public static void putrequest(){
         //Get uri
         RestAssured.baseURI= "https://reqres.in/api/users/";
         //Get Request

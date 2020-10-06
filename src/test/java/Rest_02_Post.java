@@ -10,9 +10,9 @@ import org.testng.annotations.Test;
 
 // https://reqres.in/ used for below example
 
-public class Rest_02_Post {
+public class Rest_02_Post{
 @Test
-    public void postrequest(){
+    public static void postrequest(){
         //Get URI
         RestAssured.baseURI=("https://reqres.in/api/");
         //Get request object
